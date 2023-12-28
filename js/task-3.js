@@ -1,32 +1,11 @@
-class StringBuilder {
-    #value
-    constructor(initialValue) {
-        this.#value = initialValue
-    }
+const nameInput = document.querySelector('#name-input')
+const nameOutput = document.querySelector('#name-output')
 
-    getValue() {
-        return this.#value
+nameInput.addEventListener('input', (event) => {
+    const text = event.currentTarget.value.trim()
+    if (text == '') {
+        nameOutput.textContent = 'Anonymous'
+    } else {
+        nameOutput.textContent = text
     }
-
-    padEnd(str) {
-        this.#value = this.#value.concat(str)
-    }
-
-    padStart(str) {
-        this.#value = str.concat(this.#value)
-    }
-
-    padBoth(str) {
-        this.#value = this.#value.concat(str)
-        this.#value = str.concat(this.#value)
-    }
-}
-
-const builder = new StringBuilder('.')
-console.log(builder.getValue()) // "."
-builder.padStart('^')
-console.log(builder.getValue()) // "^."
-builder.padEnd('^')
-console.log(builder.getValue()) // "^.^"
-builder.padBoth('=')
-console.log(builder.getValue()) // "=^.^="
+})
